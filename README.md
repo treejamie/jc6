@@ -1,0 +1,1 @@
+Gosh. Another personal blog.
