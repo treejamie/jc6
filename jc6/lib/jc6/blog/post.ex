@@ -1,3 +1,4 @@
+# the scheme
 defmodule Jc6.Blog.Post do
   use Ecto.Schema
   import Ecto.Changeset
@@ -6,6 +7,7 @@ defmodule Jc6.Blog.Post do
     field :title, :string
     field :slug, :string
     field :content, :string
+    field :markdown, :string
     field :excerpt, :string
     field :status, :string, default: "draft" # draft, published, archived
     field :published_at, :utc_datetime
