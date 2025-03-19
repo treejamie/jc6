@@ -18,12 +18,22 @@ defmodule Jc6.Blog.Post do
 
   def changeset(post, attrs) do
     post
-    |> cast(attrs, [:title, :content, :excerpt, :status, :published_at, :featured, :author_id])
-    |> validate_required([:title, :content, :author_id])
+    |> cast(attrs, [:title, :content, :markdown, :excerpt, :status, :published_at, :featured])
+    |> validate_required([:title, :markdown])
     |> validate_inclusion(:status, ["draft", "published", "archived"])
+    |> generate_content()
     |> generate_slug()
     |> unique_constraint(:slug)
-    |> foreign_key_constraint(:author_id)
+  end
+
+  defp generate_content(changeset) do
+    case get_change(changeset, :markdown) do
+      nil -> changeset
+      markdown ->
+        {:ok,  content} = markdown
+                  |> MDEx.to_html
+        put_change(changeset, :content, content)
+    end
   end
 
   defp generate_slug(changeset) do

@@ -9,14 +9,22 @@ defmodule Jc6.Blog.PostTests do
       slug: "foo",
       content: "<p>This is foo.</p>",
       markdown: "This is foo.",
-      excerpt: "yeah, this is food"
+      excerpt: "yeah, this is foo"
     }
     # no shenanigans when we insert it
     {:ok, _post} = Repo.insert(p)
   end
 
   test "content is built from markdown with service", %{} do
+    # the attrs
+    attrs = %{
+      title: "Foo2",
+      markdown: "This is foo.\n* one\n* two",
+      excerpt: "yeah, this is foo"
+    }
 
+    # insert using service
+    Posts.create(attrs)
 
   end
 end
