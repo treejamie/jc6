@@ -1,4 +1,4 @@
-ntame: Elixir CI
+name: Elixir CI
 
 on:
   push:
