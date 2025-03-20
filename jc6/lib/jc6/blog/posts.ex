@@ -25,4 +25,8 @@ defmodule Jc6.Blog.Posts do
     |> where([p], p.status != "deleted" )
     |> Repo.all()
   end
+
+  def by_slug(slug) do
+    Repo.get_by(Post, slug: slug)
+  end
 end
