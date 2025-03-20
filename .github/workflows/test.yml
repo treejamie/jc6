@@ -1,4 +1,4 @@
-name: Elixir CI
+ntame: Elixir CI
 
 on:
   push:
@@ -15,9 +15,6 @@ jobs:
         elixir: [1.18.3]
     steps:
         - uses: actions/checkout@v1.0.0
-        - uses: webfactory/ssh-agent@780d0ee9a319b8fb504cc74e4c9257ee45b94f04
-          with:
-            ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
         - uses: erlef/setup-beam@v1
           with:
