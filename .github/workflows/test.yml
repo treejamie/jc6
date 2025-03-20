@@ -9,7 +9,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     services:
       postgres:
-        image: postgres/postgres
+        image: postgres
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: mysecretpassword
