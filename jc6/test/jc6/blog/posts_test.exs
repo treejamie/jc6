@@ -11,6 +11,7 @@ defmodule Jc6.Blog.PostTests do
       markdown: "This is foo.",
       excerpt: "yeah, this is foo"
     }
+
     # no shenanigans when we insert it
     {:ok, _post} = Repo.insert(p)
   end
@@ -28,6 +29,21 @@ defmodule Jc6.Blog.PostTests do
 
     # post has the right content
     assert post.content == "<p>This is foo.</p>\n<ul>\n<li>one</li>\n<li>two</li>\n</ul>"
+  end
+
+  test "posts default to draft when they are created", %{} do
+    # the attrs
+    attrs = %{
+      title: "Foo2",
+      markdown: "This is foo.\n* one\n* two",
+      excerpt: "yeah, this is foo"
+    }
+
+    # insert using service
+    {:ok, post} = Posts.create(attrs)
+
+    # post is draft
+    assert post.status == "draft"
 
   end
 end
