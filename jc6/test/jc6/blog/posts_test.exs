@@ -44,6 +44,30 @@ defmodule Jc6.Blog.PostTests do
 
     # post is draft
     assert post.status == "draft"
+  end
+
+  test "published returns only published, all returns all non deleted", %{} do
+    # make a post or two
+    {:ok, _p1} =
+      Posts.create(%{
+        title: "A lovely post",
+        markdown: "# Wow\nneat",
+        excerpt: "You won't beleive this"
+      })
+    {:ok, _p2} =
+      Posts.create(%{
+        title: "A horrible post",
+        markdown: "# Wow\nawful",
+        status: "published",
+        published_at: DateTime.utc_now,
+        excerpt: "You will beleive this"
+      })
+
+      # we get one post from published
+      assert 1 == Posts.published |> length
+
+      # and we get two from all
+      assert 2 = Posts.all |> length
 
   end
 end

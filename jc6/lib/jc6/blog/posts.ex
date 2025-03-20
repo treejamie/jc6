@@ -14,6 +14,15 @@ defmodule Jc6.Blog.Posts do
   def published(q) do
     q
     |> where(status: "published")
+    |> order_by(:published_at)
+    |> Repo.all()
+  end
+
+  def all, do: all(Post)
+
+  def all(q) do
+    q
+    |> where([p], p.status != "deleted" )
     |> Repo.all()
   end
 end
