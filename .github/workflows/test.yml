@@ -1,4 +1,4 @@
-name: Elixir CI
+name: Testing JC6
 
 on:
   push:
@@ -48,12 +48,12 @@ jobs:
           run: |
             mix compile --force --warnings-as-errors
             mix test --cover
-            env:
+          env:
             MIX_ENV: test
 
         - name: Static Code Analysis
           run: |
             mix sobelow -v
             mix sobelow --exit --threshold=medium
-            env:
+          env:
             MIX_ENV: test
