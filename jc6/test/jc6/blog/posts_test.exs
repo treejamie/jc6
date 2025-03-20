@@ -24,7 +24,10 @@ defmodule Jc6.Blog.PostTests do
     }
 
     # insert using service
-    Posts.create(attrs)
+    {:ok, post} = Posts.create(attrs)
+
+    # post has the right content
+    assert post.content == "<p>This is foo.</p>\n<ul>\n<li>one</li>\n<li>two</li>\n</ul>"
 
   end
 end
