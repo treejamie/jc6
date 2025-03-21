@@ -38,7 +38,7 @@ posts = [
     excerpt: "I didn’t know a birch from a beech, but I knew I was burning out. The idea of switching careers felt like pruning a healthy tree...",
     status: "published",
     published_at: ~U[2021-05-15 10:00:00Z],
-    featured: false
+    featured: true
   },
   %{
     title: "Sapling Days: Learning Trees While Forgetting Tech",
@@ -181,7 +181,7 @@ posts = [
     ###### 🌿📚✨
     """,
     excerpt: "From August 2024, I began teaching what I’d learned. It was like writing documentation for nature. Students and saplings alike...",
-    status: "published",
+    status: "draft",
     published_at: ~U[2024-09-02 08:45:00Z],
     featured: false
   },
@@ -212,7 +212,7 @@ posts = [
     ###### 🌲🪵🖥️
     """,
     excerpt: "Wood stacks. So do error logs. In late 2023, I started noticing how much forest work mirrored my old command line life...",
-    status: "published",
+    status: "draft",
     published_at: ~U[2023-11-10 12:00:00Z],
     featured: false
   },

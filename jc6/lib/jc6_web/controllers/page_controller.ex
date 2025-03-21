@@ -10,12 +10,4 @@ defmodule Jc6Web.PageController do
     render(conn, :home, layout: false, posts: posts)
   end
 
-
-  def detail(conn, %{"slug" => slug}) do
-    # get the post
-    post = Posts.by_slug(slug)
-
-    # and done
-    render(conn, :detail, layout: true, post: post)
-  end
 end

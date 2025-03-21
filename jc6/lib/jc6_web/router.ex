@@ -18,7 +18,8 @@ defmodule Jc6Web.Router do
     pipe_through :browser
 
     get "/", PageController, :home
-    get "/blog/:slug", PageController, :detail
+    get "/words/", BlogController, :list
+    get "/words/:slug", BlogController, :detail
   end
 
   # Other scopes may use custom stacks.

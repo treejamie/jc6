@@ -3,3 +3,15 @@
 @import "tailwindcss/utilities";
 
 /* This file is for your main application CSS */
+@layer components {
+
+        #post-detail p, 
+        #post-detail h1,
+        #post-detail h2,
+        #post-detail h3,
+        #post-detail h4 {
+            @apply mb-4 mt-4;
+        }
+
+
+}
