@@ -9,3 +9,6 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+# priv/repo/seeds.exs
+IO.puts("🌱 Seeding blog posts...")
+Code.require_file("posts_seeds.exs", __DIR__)

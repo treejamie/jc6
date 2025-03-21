@@ -14,9 +14,9 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: mysecretpassword
           POSTGRES_DB: jc6
-          POSTGRES_PORT: 54321
+          POSTGRES_PORT: 5432
         ports:
-          - 5432:5432
+          - 54321:5432
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
