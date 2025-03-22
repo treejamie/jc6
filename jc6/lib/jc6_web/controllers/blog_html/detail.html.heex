@@ -1,0 +1,12 @@
+<div id="post-detail">
+
+    <span class="text-sm text-gray-400"> <%= ui_time(@post.published_at) %> </span>
+
+    <h1 class="text-4xl font-black"><%= @post.title %></h1>
+
+    <p class="text-xl font-semibold  mb-16 mt-16">
+    <%= @post.excerpt %>
+    </p>
+
+    <%= raw(@post.content) %>
+</div>
