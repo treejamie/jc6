@@ -1,10 +1,13 @@
 alias Jc6.Blog.Post
 alias Jc6.Repo
+alias Jc6.Accounts.User
 
-
+# get the user foo@bar.com
+user = Repo.get_by!(User, email: "foo@bar.com")
 
 posts = [
   %{
+    author: user.id,
     title: "When Roots Start to Show: The First Crack in My Tech Path",
     markdown: """
     # When Roots Start to Show
@@ -41,6 +44,8 @@ posts = [
     featured: true
   },
   %{
+
+    author: user.id,
     title: "Sapling Days: Learning Trees While Forgetting Tech",
     markdown: """
     # Sapling Days
@@ -80,6 +85,7 @@ posts = [
     featured: false
   },
   %{
+    author: user.id,
     title: "Canopies & Code: Finding Parallels in Elixir",
     markdown: """
     # Canopies & Code
@@ -118,6 +124,9 @@ posts = [
     featured: true
   },
   %{
+    author: user.id,
+
+
     title: "Stack Traces and Sap Lines: Debugging in the Woods",
     markdown: """
     # Stack Traces and Sap Lines
@@ -151,6 +160,7 @@ posts = [
     featured: false
   },
   %{
+    author: user.id,
     title: "Branches of Knowledge: Teaching Woodland Wisdom",
     markdown: """
     # Branches of Knowledge
@@ -186,6 +196,7 @@ posts = [
     featured: false
   },
   %{
+    author: user.id,
     title: "Logs, Logs Everywhere: From Firewood to File Systems",
     markdown: """
     # Logs, Logs Everywhere
@@ -217,6 +228,7 @@ posts = [
     featured: false
   },
   %{
+    author: user.id,
     title: "Pruning Paths: Saying Goodbye to Teaching",
     markdown: """
     # Pruning Paths
@@ -250,6 +262,7 @@ posts = [
     featured: true
   },
   %{
+    author: user.id,
     title: "Rustling Memories: The Overlap Between Rustling Leaves and Rust Programming",
     markdown: """
     # Rustling Memories
@@ -280,6 +293,7 @@ posts = [
     featured: false
   },
   %{
+    author: user.id,
     title: "From Logs to Logs: Parsing My Journey with Python",
     markdown: """
     # From Logs to Logs

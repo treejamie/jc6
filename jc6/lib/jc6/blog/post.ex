@@ -13,13 +13,15 @@ defmodule Jc6.Blog.Post do
     field :published_at, :utc_datetime
     field :featured, :boolean, default: false
 
+    belongs_to :author, Jc6.Accounts.User
+
     timestamps()
   end
 
   def changeset(post, attrs) do
     post
-    |> cast(attrs, [:title, :content, :markdown, :excerpt, :status, :published_at, :featured])
-    |> validate_required([:title, :markdown])
+    |> cast(attrs, [:title, :content, :markdown, :excerpt, :status, :published_at, :featured, :author])
+    |> validate_required([:title, :markdown, :author])
     |> validate_inclusion(:status, ["draft", "published", "archived"])
     |> generate_content()
     |> generate_slug()
