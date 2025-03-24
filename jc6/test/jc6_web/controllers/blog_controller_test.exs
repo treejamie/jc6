@@ -1,6 +1,6 @@
 defmodule Jc6Web.BlogControllerTest do
   use Jc6Web.ConnCase
-  alias Jc6.Blog.Posts
+  alias Jc6.Test.Jc6Helper
 
   test "GET /words/", %{conn: conn} do
     conn = get(conn, ~p"/words")
@@ -13,18 +13,10 @@ defmodule Jc6Web.BlogControllerTest do
   end
 
   test "200 on a post that exists", %{conn: conn} do
-    # the attrs
-    attrs = %{
-      title: "Foo2",
-      markdown: "This is foo.\n* one\n* two",
-      excerpt: "yeah, this is foo",
-      status: "published"
-    }
+    # make a post
+    _post = Jc6Helper.make_post(%{title: "Barry Buttercap"})
 
-    # insert using service
-    {:ok, _post} = Posts.create(attrs)
-
-    conn = get(conn, ~p"/words/foo2")
+    conn = get(conn, ~p"/words/barry-buttercap")
     assert conn.status == 200
   end
 

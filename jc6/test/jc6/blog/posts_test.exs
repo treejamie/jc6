@@ -1,27 +1,20 @@
 defmodule Jc6.Blog.PostTests do
   use Jc6.DataCase
-  alias Jc6.Blog.{Post, Posts}
+  alias Jc6.Blog.Posts
+  alias Jc6.Test.Jc6Helper
 
-  test "creating a post works", %{} do
-    # build the basic thing
-    p = %Post{
-      title: "Foo",
-      slug: "foo",
-      content: "<p>This is foo.</p>",
-      markdown: "This is foo.",
-      excerpt: "yeah, this is foo"
-    }
 
-    # no shenanigans when we insert it
-    {:ok, _post} = Repo.insert(p)
-  end
 
   test "content is built from markdown with service", %{} do
+    # make a user
+    u = Jc6Helper.make_user()
+
     # the attrs
     attrs = %{
       title: "Foo2",
       markdown: "This is foo.\n* one\n* two",
-      excerpt: "yeah, this is foo"
+      excerpt: "yeah, this is foo",
+      author_id: u.id
     }
 
     # insert using service
@@ -32,11 +25,15 @@ defmodule Jc6.Blog.PostTests do
   end
 
   test "posts default to draft when they are created", %{} do
+    # make a user
+    u = Jc6Helper.make_user()
+
     # the attrs
     attrs = %{
       title: "Foo2",
       markdown: "This is foo.\n* one\n* two",
-      excerpt: "yeah, this is foo"
+      excerpt: "yeah, this is foo",
+      author_id: u.id
     }
 
     # insert using service
@@ -47,27 +44,24 @@ defmodule Jc6.Blog.PostTests do
   end
 
   test "published returns only published, all returns all non deleted", %{} do
-    # make a post or two
-    {:ok, _p1} =
-      Posts.create(%{
-        title: "A lovely post",
-        markdown: "# Wow\nneat",
-        excerpt: "You won't beleive this"
-      })
-    {:ok, _p2} =
-      Posts.create(%{
-        title: "A horrible post",
-        markdown: "# Wow\nawful",
-        status: "published",
-        published_at: DateTime.utc_now,
-        excerpt: "You will beleive this"
-      })
+    # make a user
+    user = Jc6Helper.make_user()
 
-      # we get one post from published
-      assert 1 == Posts.published |> length
+    # now make two posts - one defaults to draft and not published
+    _p1 = Jc6Helper.make_post(%{title: "little mandy buttercap"}, user)
 
-      # and we get two from all
-      assert 2 = Posts.all |> length
+    # the second is explicitaly made to be published
+    _p2 = Jc6Helper.make_post(%{
+      title: "little bingo butterbash",
+      status: "published",
+      published_at: DateTime.utc_now,
+    }, user)
+
+    # we get one post from published
+    assert 1 == Posts.published |> length
+
+    # and we get two from all
+    assert 2 = Posts.all |> length
 
   end
 end
