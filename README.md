@@ -1,11 +1,10 @@
-## Another Personal Blog.
+## Not Another Blog.
 
-Oh dear, it's that urge again. Time to write another blog engine. 
+This is not another blog engine per se, but it is built around one. However this time I will engage in the aethetic and creative visual process. I want to design something that...
 
-
-### BUT Y THO
- 
-This one is to allow me to set up another personal website that I can use as a blog to once again claw myself up the career ladder. Also, I am feeling the urge to sharpen up my visual design skills. It has been well over a decade since I designed a personal site and that seems quite exciting.
+* communicates the CPD I'm engaged in
+* is aesethetically pleasing to me and reflective of the styles I very much enjoy
+* has interactivity and "real-timeness" about it.
 
 
 ### Technology
