@@ -10,5 +10,5 @@ This one is to allow me to set up another personal website that I can use as a b
 
 ### Technology
 
-Elixir, Phoenix. For the front end I'll be throwing in some Typescript based react for UI. I don't imagine I'll be doing a front-end role in my day work, so staying sharp on my own dime seems like a good idea.
+Elixir with Phoenix and a good dose of LiveViews. I'm feeling like I want to get into some interaction data animations so I'll see where that ends up. I've no idea what tech I'll use for that right now.
 
